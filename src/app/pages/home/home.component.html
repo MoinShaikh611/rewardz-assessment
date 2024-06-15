@@ -1,6 +1,26 @@
 
-<input type="text" [(ngModel)]="searchReward" (input)="applyFilters()" />
 
-<div *ngFor="let reward of filteredRewards">
-    <li>{{ reward.name  }} {{reward.valid_until | date:'dd-MM-yyyy'}}</li>
+
+<div class="home-wrapper">
+    <div class="search-bar-container">
+        <input type="text" [(ngModel)]="searchReward" (input)="applyFilters()" />
+    </div>
+    <div class="applied-filter-container">
+        <h3>Applied Filters: <span>e-Voucher</span><span>Clear Filters</span></h3>
+    </div>
+    <div class="category-and-listing-wrapper">
+        <div class="category-container">
+            <h2>card</h2>
+        </div>
+        <div class="reward-listing-container">
+            <div class="reward-listing-header">
+                <div class="results-found">21 results found</div>
+                <button class="sort-btn">Sort</button>
+            </div>
+            <div *ngFor="let reward of filteredRewards">
+                <li>{{ reward.name  }}</li>
+                <app-card></app-card>
+            </div>            
+        </div>
+    </div>
 </div>
