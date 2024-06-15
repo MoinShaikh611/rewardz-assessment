@@ -1,0 +1,25 @@
+/* Ensure the body and html elements are set to 100% height */
+html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  /* The wrapper takes up the full height of the viewport */
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+  
+  /* Main content should take up available space */
+  .main-content {
+    flex: 1;
+  }
+  
+  /* Footer should not be fixed, allowing it to stay at the bottom of the content */
+  app-footer {
+    background-color: #f8f9fa;
+    padding: 10px;
+    text-align: center;
+  }
+  
