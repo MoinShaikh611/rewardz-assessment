@@ -10,6 +10,8 @@ import { AppRoutingModule } from './app.router';
 import { RewardsListComponent } from './components/rewards-list/rewards-list.component';
 import { RewardsCategoriesComponent } from './components/rewards-categories/rewards-categories.component';
 import { CardComponent } from './components/card/card.component';
+import { SearchComponent } from './components/search/search.component';
+import { RewardService } from './services/reward.service';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { CardComponent } from './components/card/card.component';
     HomeComponent,
     RewardsListComponent,
     RewardsCategoriesComponent,
-    CardComponent
+    CardComponent,
+    SearchComponent
     
   ],
   imports: [
@@ -29,7 +32,7 @@ import { CardComponent } from './components/card/card.component';
     FormsModule,
     
   ],
-  providers: [],
+  providers: [RewardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

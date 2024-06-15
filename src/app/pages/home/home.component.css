@@ -2,22 +2,19 @@
     padding: 2em;
 }
 
-.search-bar-container input{
-    width: 100%;
-}
-
 .category-and-listing-wrapper{
     display: flex;
     flex-wrap: wrap;
 }
-.category-container{
+app-rewards-categories{
     flex:1 0 33%;
 }
-.reward-listing-container{
+app-rewards-list{
     flex: 2 0 66%;
 }
 @media screen and (max-width: 768px) {
-    .category-container, .reward-listing-container {
+    app-rewards-categories,app-rewards-list {
       flex: 1 0 100%; 
     }
-  }
+}
+

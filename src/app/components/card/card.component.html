@@ -1,1 +1,24 @@
-<p>card works!</p>
+<div class="card">
+    <img src="https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Reward Image" class="card-image">
+    
+    <ng-container *ngIf="reward.quantity===0">
+      <div class="batch-on-card">
+        <p >Out of Stock</p>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="reward.quantity !== 0 && reward.quantity <= reward.low_quantity">
+      <div class="batch-on-card">
+      <span>HIGH ON DEMAND</span>
+      <p >Only {{reward.low_quantity}} left</p>
+      </div>
+    </ng-container>
+    
+    
+    <div class="card-content">
+      <h2 class="card-name">{{reward.name}}</h2>
+      <p class="card-points">{{reward.points}} Points</p>
+      <p class="card-date">Valid Until: {{reward.valid_until | date:"dd-MM-yyyy"}}</p>
+    </div>
+</div>
+  

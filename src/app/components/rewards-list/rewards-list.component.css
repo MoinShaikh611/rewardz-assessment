@@ -1,0 +1,12 @@
+.reward-listing-header{
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0;
+}
+
+.reward-card-list-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-between;
+}
