@@ -6,6 +6,6 @@
       <button class="sort-btn">Sort</button>
   </div>
   <div class="reward-card-list-container">
-    <app-card *ngFor="let reward of rewards$ | async" [reward]="reward"></app-card>
+    <app-card *ngFor="let reward of rewardService.rewards$ | async" [reward]="reward"></app-card>
   </div>
 </div>

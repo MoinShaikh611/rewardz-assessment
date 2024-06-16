@@ -1,3 +1,14 @@
 <div class="category-container">
-    <h2>card</h2>
-</div>
+<fieldset>
+    <legend>Choose your Categories</legend>
+    <ng-container *ngFor="let category of categories">
+        <div>
+            <input type="checkbox" id="{{category}}" name="categories" value="{{category}}"
+            (change)="onCategoryChange($event)" />
+            <label for="{{category}}">{{category | titlecase}}</label>
+          </div>
+    </ng-container>
+  </fieldset></div>
+
+
+  
