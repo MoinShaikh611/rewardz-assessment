@@ -1,0 +1,6 @@
+<div class="applied-filter-container">
+    <ng-container *ngIf="categories.length">
+        <h3>Applied Filters: <span *ngFor="let item of categories">{{item}} <button (click)="removeItem(item)">X</button></span><button (click)="clearAll()">Clear Filters X</button></h3>
+    </ng-container>
+    
+</div>

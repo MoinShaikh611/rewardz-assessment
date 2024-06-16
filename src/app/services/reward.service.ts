@@ -13,14 +13,19 @@ export class RewardService {
   private searchQuerySubject: BehaviorSubject<string> = new BehaviorSubject<string>('');
   searchQuery$: Observable<string> = this.searchQuerySubject.asObservable();
 
-  private categoriesSubject: BehaviorSubject<string[]> = new BehaviorSubject<string[]>([]);
-  selectedCategories$:Observable<string[]> = this.categoriesSubject.asObservable();
+  private categoriesSubject: BehaviorSubject<any[]> = new BehaviorSubject<any[]>([]);
+  selectedCategories$:Observable<any[]> = this.categoriesSubject.asObservable();
+
+  categoryRemovedSubject:BehaviorSubject<string> = new BehaviorSubject<string>('');
+  
+  clearAllCategoriesSubject:BehaviorSubject<any> = new BehaviorSubject<any>(false);
+  clearAllCategories$:Observable<any[]> = this.clearAllCategoriesSubject.asObservable();
 
   setSearchQuery(query: string): void {
     this.searchQuerySubject.next(query);    
   }
 
-  setCategories(categories:string[]):void{
+  setCategories(categories:any[]):void{
     this.categoriesSubject.next(categories);
   }
 }

@@ -3,9 +3,30 @@
 <div class="reward-listing-container">
   <div class="reward-listing-header">
       <div class="results-found">{{rewardsFound}} results found</div>
-      <button class="sort-btn">Sort</button>
+      <button class="sort-btn" (click)="showSortSideBar()">Sort</button>
   </div>
   <div class="reward-card-list-container">
     <app-card *ngFor="let reward of rewardService.rewards$ | async" [reward]="reward"></app-card>
   </div>
+  <div class="reward-sidebar" [ngClass]="{'active':sidebarOpen}">
+    <div class="reward-sidebar-container">
+      <div class="d-flex jc-content-between">
+        <h5>Filter By</h5>
+        <h5 class="cursor-pointer" (click)="resetAll()">Reset All</h5>
+      </div>
+      <hr>
+      <div class="d-flex jc-content-betwen">
+        <h5>Sort</h5>
+      </div>
+      <div style="flex: 1;">
+        <div class="d-flex gap-1">
+          <button class="sort-btn" [ngClass]="{'active':isOrderAsc}" (click)="sort('asc')">A to Z</button>
+          <button class="sort-btn"[ngClass]="{'active':!isOrderAsc}" (click)="sort('desc')">Z to A</button>
+        </div>
+      </div>
+      <div>
+        <button class="apply-btn text-center" (click)="sortRewardsList()">Apply</button>
+      </div>
+    </div>
+  </div>  
 </div>

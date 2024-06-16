@@ -3,9 +3,9 @@
     <legend>Choose your Categories</legend>
     <ng-container *ngFor="let category of categories">
         <div>
-            <input type="checkbox" id="{{category}}" name="categories" value="{{category}}"
+            <input #categoryCheckbox type="checkbox" id="{{category}}" name="categories" value="{{category}}"
             (change)="onCategoryChange($event)" />
-            <label for="{{category}}">{{category | titlecase}}</label>
+            <label for="{{category}}">{{category | titlecase}} </label>
           </div>
     </ng-container>
   </fieldset></div>

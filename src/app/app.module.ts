@@ -12,6 +12,7 @@ import { RewardsCategoriesComponent } from './components/rewards-categories/rewa
 import { CardComponent } from './components/card/card.component';
 import { SearchComponent } from './components/search/search.component';
 import { RewardService } from './services/reward.service';
+import { AppliedFiltersComponent } from './components/applied-filters/applied-filters.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { RewardService } from './services/reward.service';
     RewardsListComponent,
     RewardsCategoriesComponent,
     CardComponent,
-    SearchComponent
+    SearchComponent,
+    AppliedFiltersComponent
     
   ],
   imports: [

@@ -10,3 +10,41 @@
     gap: 1em;
     justify-content: space-between;
 }
+
+.reward-sidebar{
+  height: 100%;
+  width: 250px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+  overflow-x: hidden;
+  padding: 20px;
+  transform: translateX(100%);
+  transition: .5s ease-in-out all;
+}
+.reward-sidebar.active{
+    transform: translateX(0%);
+}
+.sort-btn, .apply-btn{
+    border: none;
+    border-radius: 6px;
+    padding: .5em 1em;
+    cursor: pointer;
+}
+.sort-btn.active{
+    background-color: rgb(227, 9, 9);
+    color: white;
+}
+
+.apply-btn{
+    background-color: rgb(227, 9, 9);
+    color: white;
+    width: 100%;
+}
+
+.reward-sidebar-container{
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+}

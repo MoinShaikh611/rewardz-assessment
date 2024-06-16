@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { BehaviorSubject, Observable, of, switchMap } from 'rxjs';
+import { AfterViewInit, Component } from '@angular/core';
+import { BehaviorSubject, Observable, Subscription, of, switchMap } from 'rxjs';
 import { RewardService } from '../../services/reward.service';
 import Data from '../../../../public/data.json'
 
@@ -8,7 +8,7 @@ import Data from '../../../../public/data.json'
   templateUrl: './rewards-list.component.html',
   styleUrl: './rewards-list.component.css'
 })
-export class RewardsListComponent {
+export class RewardsListComponent  implements AfterViewInit{
   
   private rewardsData: any[] = [];
   rewardsFound:number = 0;
@@ -16,28 +16,32 @@ export class RewardsListComponent {
   currentSearchQuery: string = '';
   currentCategories:string[] = [];
 
+  sidebarOpen = false;
+  isOrderAsc = true;
+
 
   constructor(public rewardService: RewardService) { }
 
   ngOnInit(): void {
-    this.rewardsData = Data;
+    this.rewardsData = structuredClone(Data);
     this.rewardService.rewards$ = this.getFilteredRewards();
-    this.rewardService.rewards$ = this.getFilteredRewardsAsPerCategories();
     this.rewardsFound = this.rewardsData.length;
 
+  }
 
+  ngAfterViewInit(): void {
     this.rewardService.searchQuery$.subscribe(query => {
       this.currentSearchQuery = query;
       this.rewardService.rewards$ = this.getFilteredRewards();
     });
-    this.rewardService.selectedCategories$.subscribe(query => {
+     this.rewardService.selectedCategories$.subscribe(query => {      
       this.currentCategories = query;
       if(query.length){
         this.rewardService.rewards$ = this.getFilteredRewardsAsPerCategories();
       }else{
         this.rewardService.rewards$ = this.getFilteredRewards();
       }
-    })
+    });
   }
 
    getFilteredRewards(): Observable<any[]> {
@@ -51,6 +55,34 @@ export class RewardsListComponent {
     this.rewardsFound = filteredRewards.length;    
     return of(filteredRewards)
   }
+
+  sort(order:string){
+    if(order === 'asc'){
+      this.isOrderAsc = true
+    }else{
+      this.isOrderAsc = false
+    }
+  }
+
+  sortRewardsList(){
+    if(this.isOrderAsc){
+      const sortedByName =  this.rewardsData.sort((a,b) => a.name.localeCompare(b.name))
+      this.rewardService.rewards$ = of(sortedByName);
+    }else{
+      const sortedByName =  this.rewardsData.sort((a,b) => b.name.localeCompare(a.name))
+      this.rewardService.rewards$ = of(sortedByName);
+    }      
+  }
+
+  showSortSideBar() {
+    this.sidebarOpen = !this.sidebarOpen;
+  }
+
+  resetAll(){
+    this.rewardService.rewards$ = of(structuredClone(Data))
+    this.showSortSideBar()
+  }
+
 
 
 }

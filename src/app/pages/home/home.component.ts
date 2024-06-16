@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import data from '../../../../public/data.json'
-import { CommonModule } from '@angular/common';
+import { RewardService } from '../../services/reward.service';
 
 
 @Component({
@@ -9,11 +7,7 @@ import { CommonModule } from '@angular/common';
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
-export class HomeComponent implements OnInit{
-
-  constructor(){}
-  ngOnInit(): void {
-  }
-
+export class HomeComponent {
+ 
 
 }
